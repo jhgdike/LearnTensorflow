@@ -1061,7 +1061,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--test_batch_size',
         type=int,
-        default=-1,
+        default=200,
         help="""\
       How many images to test on. This test set is only used once, to evaluate
       the final accuracy of the model after training completes.
