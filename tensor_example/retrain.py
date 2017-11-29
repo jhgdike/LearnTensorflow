@@ -897,7 +897,7 @@ def main(_):
             if do_distort_images:
                 (train_bottlenecks,
                  train_ground_truth) = get_random_distorted_bottlenecks(
-                    sess, image_lists, FLAGS.train_batch_size, 'training',
+                    sess, image_lists, FLAGS.train_batch_size, TRAINING,
                     FLAGS.image_dir, distorted_jpeg_data_tensor,
                     distorted_image_tensor, resized_image_tensor, bottleneck_tensor, labels)
             else:
@@ -926,7 +926,7 @@ def main(_):
                                 (datetime.now(), i, cross_entropy_value))
                 validation_bottlenecks, validation_ground_truth, _ = (
                     get_random_cached_bottlenecks(
-                        sess, image_lists, FLAGS.validation_batch_size, 'validation',
+                        sess, image_lists, FLAGS.validation_batch_size, VALIDATION,
                         FLAGS.bottleneck_dir, FLAGS.image_dir, jpeg_data_tensor,
                         decoded_image_tensor, resized_image_tensor, bottleneck_tensor,
                         labels))
@@ -956,7 +956,7 @@ def main(_):
         # some new images we haven't used before.
         test_bottlenecks, test_ground_truth, _ = (
             get_random_cached_bottlenecks(
-                sess, image_lists, FLAGS.test_batch_size, 'testing',
+                sess, image_lists, FLAGS.test_batch_size, TESTING,
                 FLAGS.bottleneck_dir, FLAGS.image_dir, jpeg_data_tensor,
                 decoded_image_tensor, resized_image_tensor, bottleneck_tensor, labels))
         test_accuracy = sess.run(
