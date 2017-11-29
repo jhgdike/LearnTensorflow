@@ -64,12 +64,14 @@ def create_image_lists():
 
     if not gfile.Exists(IMAGE_DIR):
         tf.logging.error("Image directory not found.")
-        return
+        print("Image directory not found.")
+        exit(1)
 
     file_list = os.listdir(IMAGE_DIR)  # 输出的是图片文件的文件名
     if not (20 < len(file_list) < MAX_NUM_IMAGES_PER_CLASS):
         tf.logging.warning('WARNING: 图片数量异常.')
-        return
+        print('WARNING: 图片数量异常.')
+        exit(1)
 
     testing_count, validation_count = len(file_list) * testing_percentage, len(file_list) * validation_percentage
     return {
