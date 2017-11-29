@@ -73,7 +73,8 @@ def create_image_lists():
         print('WARNING: 图片数量异常.')
         exit(1)
 
-    testing_count, validation_count = len(file_list) * testing_percentage, len(file_list) * validation_percentage
+    testing_count = int(len(file_list) * testing_percentage)
+    validation_count = int(len(file_list) * validation_percentage)
     return {
         TESTING: file_list[:testing_count],
         VALIDATION: file_list[testing_count:(testing_count + validation_count)],
